@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import Lives from "./lives";
-import Word from "./word";
-import Letters from "./letters";
-import Start from "./start";
+import Layout from "./layout";
 
 const MAX_LIVES = 6;
 export default function Game() {
@@ -21,14 +18,17 @@ export default function Game() {
   });
 
   const lives = MAX_LIVES - wrongLetters.length;
-  const isRunning = lives && actualWord;
+  const isRunning = actualWord;
 
   const isWon =
     isRunning &&
+    lives &&
     [...word_set].reduce((acc, curr) => {
       if (!playedSet.has(curr)) return false;
       return acc;
     }, true);
+
+  const running = false;
 
   const guess = (letter) => {
     setplayedWords((prev) => [...prev, letter]);
@@ -37,24 +37,21 @@ export default function Game() {
   const start = () => {
     setactualWord("house");
     setplayedWords([]);
+    running = true;
   };
 
   return (
     <>
-      {isRunning && (
-        <>
-          <Lives livesLeft={lives} />
-          <Word actualword={actualWord} playedLetters={playedSet} />
-          <Letters playedLetters={playedSet} onSelect={guess} />
-        </>
-      )}
-      <Start onstart={start} />
-
-      {isWon && (
-        <>
-          <div>You Won!!</div>
-        </>
-      )}
+      <Layout
+        lives={lives}
+        actualWord={actualWord}
+        playedSet={playedSet}
+        guess={guess}
+        start={start}
+        isWon={isWon}
+        isRunning={isRunning}
+        running={isRunning}
+      />
     </>
   );
 }

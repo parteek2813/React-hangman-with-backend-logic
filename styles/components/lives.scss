@@ -1,0 +1,26 @@
+.lives {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: $dark-color;
+  font-size: 3rem;
+  font-family: "Mochiy Pop One", sans-serif;
+}
+
+.hearts {
+  margin-bottom: 10px;
+}
+
+.heart {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("./heart.png"); /* Replace with your heart image */
+  background-size: cover;
+  margin-right: 5px;
+}
+
+.heart-container {
+  margin-top: 400px;
+  justify-content: center;
+}
