@@ -3,6 +3,7 @@ import Lives from "./lives";
 import Word from "./word";
 import Letters from "./letters";
 import Start from "./start";
+import Title from "./title";
 
 export default function Layout({
   lives,
@@ -24,17 +25,20 @@ export default function Layout({
             </div>
 
             <div className="right-pane">
+              <Title />
               <Word actualword={actualWord} playedLetters={playedSet} />
               <Letters playedLetters={playedSet} onSelect={guess} />
             </div>
           </>
         )}
         <Start onstart={start} isRunning={isRunning} running={running} />
-        {isWon && (
-          <>
-            <div className="won-style">You Won!!</div>
-          </>
-        )}
+        <div className="won-container">
+          {isWon && (
+            <>
+              <div className="won-style">You Won!!</div>
+            </>
+          )}
+        </div>
       </div>
     </>
   );
