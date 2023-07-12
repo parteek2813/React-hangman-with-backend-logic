@@ -32,6 +32,7 @@ export default function Layout({
           </>
         )}
         <Start onstart={start} isRunning={isRunning} running={running} />
+
         <div className="won-container">
           {isWon && (
             <>

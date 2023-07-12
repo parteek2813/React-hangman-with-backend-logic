@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An awesome game developed by one dev",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack index.html"
   },
   "author": "",
   "license": "ISC",
